@@ -1,0 +1,198 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+<title>iPhone Style Radio buttons</title>
+
+<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/jquery.js" charset="utf-8"></script>
+
+<style>
+.btn-group{
+  width:100%;
+}
+.clearfix{
+  zoom:1;
+}
+.clearfix::before, 
+.clearfix::after {
+  content: "";
+  display: table;
+}
+.clearfix::after {
+  clear: both;
+}
+
+.btn-group:after{
+  clear: both;
+}
+
+.btn-group > .btn{
+  background-color: #E1E1E1;
+  border: 1px solid #EAEAEA; 
+  float: left;
+  width:19%;
+  height:20%;
+  text-align:center;
+}
+
+.btn-group > .btn.active{
+  background-color: #FFFFFF;
+  border: 1px solid #EAEAEA;  
+}
+
+.btn-group > .btn:first-child {
+  -webkit-border-bottom-left-radius: 4px;
+  -webkit-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.btn-group > .btn:last-child {
+  -webkit-border-bottom-right-radius: 4px;
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.btn-group .btn input[type="radio"]{
+  display:none;
+}
+
+.btn-group > .btn span.caption{
+  display: block;
+  font-size: 1em;
+  margin-top: 5%;
+  text-shadow: 1px 1px 1px #FFFFFF;
+}
+
+.smiley{
+  background:url("images/happy.png") no-repeat center center;
+}
+.smiley-too-happy{
+  background-image:url("images/too-happy.png")
+}
+.smiley-happy{
+  background-image:url("images/happy.png")
+}
+.smiley-ok{
+  background-image:url("images/ok.png")
+}
+.smiley-sad{
+  background-image:url("images/sad.png")
+}
+.smiley-angry{
+  background-image:url("images/angry.png")
+}
+</style>
+
+<script type="text/javascript" >
+
+( function ( $, window, document ) {
+
+  var RadioButton = function ( element, options ) {
+
+    this.options  = $.extend( {}, $.fn.RadioButton.defaults, options )
+
+    var _self            = this,
+        radioButtons     = $( 'input:radio', element );
+
+        _self.widgetElem = element;
+
+        _self.selected  = undefined;
+    
+    $( element ).addClass( 'clearfix' );
+
+    radioButtons.each( function ( ) { 
+      var className = $( this ).data( 'button-class'   ) || "",
+          title     = $( this ).data( 'button-title'   ) || "",
+          caption   = $( this ).data( 'button-caption' ) || "",
+          button;
+
+
+      _self.selected = $( this ).is(':checked') ? this : _self.selected;
+
+      $( this ).wrap( $( '<div>', { 'class' : 'btn ' + className, title : title } ) );
+
+      button = $( this ).parent();
+
+      if( caption ){
+        $( button ).append( '<span class="caption">' + caption + '</span>' );
+      }
+
+      button.bind( 'click', { _self : _self }, _self.toggle );
+
+    } );
+
+    $( _self.selected ).trigger( 'click' );
+  }
+
+  RadioButton.prototype.toggle = function ( e ) {
+    var _self   = e.data._self,
+        button  = $( this ),
+        radio   = button.find('input:radio'),
+        parent  = button.parent( '[data-toggle="buttons-radio"]' );
+
+    parent && parent.find( '.active' ).removeClass( 'active' );
+
+    button.toggleClass( 'active' ).find( 'input:radio' ).attr( 'checked', 'checked' );
+    
+    _self.selected = radio.is(':checked') ? radio : _self.selected;
+
+    _self.options.onSelect( e, _self );
+  }
+  
+  RadioButton.prototype.getSelected = function () {
+    return this.selected;
+  }
+
+  RadioButton.prototype.getValue = function () {
+    return $( this.selected ).val();
+  }
+
+ /* PLUGIN DEFINITION */
+  $.fn.RadioButton = function ( option ) {
+    return this.each( function ( ) {
+        $( this ).data( "radio-button-obj", new RadioButton( this, option ) );
+    } );
+  }
+
+  $.fn.RadioButton.defaults    = { };
+  $.fn.RadioButton.Constructor = RadioButton;
+  
+  $.fn.getRadioButton = function ( ) {
+    return $( this ).data( 'radio-button-obj' );
+  }
+
+} ) ( window.jQuery, window, document );
+
+
+
+
+$( document ).ready( function ( ) {
+  $( '.btn-group' ).RadioButton( { onSelect : function ( e, rbObj ) { 
+    //alert( rbObj.getValue() );
+    alert($(rbObj.getSelected()).data('button-caption'));
+
+  } } );
+
+  //Get selected radio button
+  //var aa = $('.btn-group').getRadioButton();
+});
+</script>
+</head>
+
+<body>
+<br/><br/><br/>	
+<form action="http://localhost:3000" method="post">
+<!-- Add data-toggle="buttons-radio" for radio style toggling on btn-group -->
+<div class="btn-group" data-toggle="buttons-radio">
+  <input type="radio" name="moode" value="1" data-button-class="smiley-too-happy smiley"  data-button-title="Too Happy" data-button-caption="Too Happy">
+  <input type="radio" name="moode" value="2" data-button-class="smiley-happy smiley"      data-button-title="Happy"     data-button-caption="Happy" checked >
+  <input type="radio" name="moode" value="3" data-button-class="smiley-ok smiley"         data-button-title="Ok"        data-button-caption="Ok" >
+  <input type="radio" name="moode" value="4" data-button-class="smiley-sad smiley"        data-button-title="Sad"       data-button-caption="Sad" >
+  <input type="radio" name="moode" value="5" data-button-class="smiley-angry smiley"      data-button-title="Angry"     data-button-caption="Angry" >
+</div>
+<br/><br/><br/>
+<input type="submit">
+</form>
+</body>
+</html>
