@@ -30,4 +30,4 @@ dependencies : jQuery js
       //var aa = $('.btn-group').getRadioButton();
     });
 
- Note : Add 'data-toggle="buttons-radio"' to container element.
+ Note : Add _'data-toggle="buttons-radio"'_ to container element.
