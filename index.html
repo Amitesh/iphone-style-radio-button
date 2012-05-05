@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="iphone-style-radio-button : iPhone style radio button widget" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>iphone-style-radio-button</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/Amitesh/iphone-style-radio-button">View on GitHub</a>
+
+          <h1 id="project_title">iphone-style-radio-button</h1>
+          <h2 id="project_tagline">iPhone style radio button widget</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/Amitesh/iphone-style-radio-button/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/Amitesh/iphone-style-radio-button/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>iphone-style-radio-button</h1>
+
+<p>iPhone style radio button widget</p>
+
+<p>dependencies : jQuery js</p>
+
+<p>@usage :</p>
+
+<pre><code>&lt;div class="btn-group" data-toggle="buttons-radio"&gt;
+  &lt;input type="radio" name="moode" value="1" data-button-class="smiley-too-happy smiley"  data-button-title="Too Happy" data-button-caption="Too Happy"&gt;
+  &lt;input type="radio" name="moode" value="2" data-button-class="smiley-happy smiley"      data-button-title="Happy"     data-button-caption="Happy" checked &gt;
+  &lt;input type="radio" name="moode" value="3" data-button-class="smiley-ok smiley"         data-button-title="Ok"        data-button-caption="Ok" &gt;
+  &lt;input type="radio" name="moode" value="4" data-button-class="smiley-sad smiley"        data-button-title="Sad"       data-button-caption="Sad" &gt;
+  &lt;input type="radio" name="moode" value="5" data-button-class="smiley-angry smiley"      data-button-title="Angry"     data-button-caption="Angry" &gt;
+&lt;/div&gt;
+
+$( document ).ready( function ( ) {
+  $( '.btn-group' ).RadioButton();
+
+  $( '.btn-group' ).RadioButton( { onSelect : function ( e, rbObj ) { 
+    //Get selected radio button value
+    //alert( rbObj.getValue() );
+
+    //Get selected radio button
+    alert( $( rbObj.getSelected() ).data( 'button-caption' ) );
+  } } );
+
+  //Get selected radio button widget
+  //var aa = $('.btn-group').getRadioButton();
+});
+</code></pre>
+
+<p>Note : Add <em>'data-toggle="buttons-radio"'</em> to container element.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">iphone-style-radio-button maintained by <a href="https://github.com/Amitesh">Amitesh</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
