@@ -6,6 +6,7 @@ iPhone style radio button widget
 dependencies : jQuery js
  
 @usage :
+
     &lt;div class="btn-group" data-toggle="buttons-radio"&gt;
       &lt;input type="radio" name="moode" value="1" data-button-class="smiley-too-happy smiley"  data-button-title="Too Happy" data-button-caption="Too Happy"&gt;
       &lt;input type="radio" name="moode" value="2" data-button-class="smiley-happy smiley"      data-button-title="Happy"     data-button-caption="Happy" checked &gt;
