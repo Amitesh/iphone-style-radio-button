@@ -14,20 +14,19 @@ dependencies : jQuery js
   <input type="radio" name="moode" value="5" data-button-class="smiley-angry smiley"      data-button-title="Angry"     data-button-caption="Angry" >
  </div>
  
-  $( document ).ready( function ( ) {
-    $( '.btn-group' ).RadioButton();
+    $( document ).ready( function ( ) {
+      $( '.btn-group' ).RadioButton();
 
-    $( '.btn-group' ).RadioButton( { onSelect : function ( e, rbObj ) { 
-     //Get selected radio button value
-     //alert( rbObj.getValue() );
+      $( '.btn-group' ).RadioButton( { onSelect : function ( e, rbObj ) { 
+        //Get selected radio button value
+        //alert( rbObj.getValue() );
 
-     //Get selected radio button
-     alert( $( rbObj.getSelected() ).data( 'button-caption' ) );
-
-    } } );
-
-   //Get selected radio button widget
-   //var aa = $('.btn-group').getRadioButton();
- });
+        //Get selected radio button
+        alert( $( rbObj.getSelected() ).data( 'button-caption' ) );
+      } } );
+      
+      //Get selected radio button widget
+      //var aa = $('.btn-group').getRadioButton();
+    });
 
  Note : Add 'data-toggle="buttons-radio"' to container element.
