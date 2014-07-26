@@ -2,10 +2,10 @@
 
 iPhone style radio button widget
 
-## Dependencies : 
+## Dependencies
 jQuery
  
-## usage
+## Usage
 
 ```html
 <div class="btn-group" data-toggle="buttons-radio">
@@ -18,22 +18,22 @@ jQuery
 ```
 
 ```javascript
-    $( document ).ready( function ( ) {
-      $( '.btn-group' ).RadioButton();
+$( document ).ready( function ( ) {
+  $( '.btn-group' ).RadioButton();
 
-      $( '.btn-group' ).RadioButton( { onSelect : function ( e, rbObj ) { 
-        //Get selected radio button value
-        //alert( rbObj.getValue() );
+  $( '.btn-group' ).RadioButton( { onSelect : function ( e, rbObj ) { 
+    //Get selected radio button value
+    //alert( rbObj.getValue() );
 
-        //Get selected radio button
-        alert( $( rbObj.getSelected() ).data( 'button-caption' ) );
-      } } );
-      
-      //Get selected radio button widget
-      //var aa = $('.btn-group').getRadioButton();
-    });
+    //Get selected radio button
+    alert( $( rbObj.getSelected() ).data( 'button-caption' ) );
+  } } );
+  
+  //Get selected radio button widget
+  //var aa = $('.btn-group').getRadioButton();
+});
 ```
 
 
- ## Note 
- Add ```'data-toggle="buttons-radio"'``` to container element.
+## Note 
+Add ```data-toggle="buttons-radio"``` to container element.
